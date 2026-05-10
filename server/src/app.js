@@ -34,7 +34,15 @@ app.use(helmet({
 }));
 
 app.use(cors({
-  origin: env.CLIENT_URL,
+  origin: (origin, callback) => {
+    // Allow if no origin (like mobile apps or curl) or if it matches CLIENT_URL (with or without slash)
+    if (!origin || origin === env.CLIENT_URL || origin === env.CLIENT_URL.replace(/\/$/, '') || origin.includes('sevalla.page') || origin.includes('sevalla.app')) {
+      callback(null, true);
+    } else {
+      logger.warn(`Blocked by CORS: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
