@@ -2,9 +2,13 @@
   "name": "clamber-monorepo",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "install": "cd client && npm install && cd ../server && npm install",
-    "build-frontend": "cd client && npm install && npm run build",
-    "start": "node server/src/server.js"
+    "install": "npm install --workspaces",
+    "build-frontend": "npm run build --workspace=client",
+    "start": "npm start --workspace=server"
   }
 }
