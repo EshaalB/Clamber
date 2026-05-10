@@ -1,0 +1,424 @@
+/* Header Styles */
+.planner-header {
+  margin-bottom: 32px;
+}
+
+.header-left-group h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.header-left-group p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.planner-summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.planner-summary-card {
+  background: var(--bg-card);
+  padding: 21px;
+  border-radius: var(--radius-lg);
+  border: var(--border-base);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.planner-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--active-accent);
+  opacity: 0.5;
+}
+
+.card-lbl {
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.card-val {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.card-val.highlight-blue {
+  color: var(--active-accent);
+}
+
+.gpa-progress-track {
+  height: 8px;
+  background: var(--bg-hover);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gpa-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--active-accent) 0%, var(--active-accent-hover) 100%);
+  border-radius: 4px;
+}
+
+/* Course Detail Cards */
+.course-plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.course-detail-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: var(--border-base);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.course-detail-card.expanded {
+  border-color: var(--active-accent);
+}
+
+.card-header {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.course-info h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.course-info .credits {
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--bg-secondary);
+  padding: 2px 10px;
+  border-radius: 20px;
+  color: var(--text-muted);
+  margin-left: 8px;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.status-pill.on-track { background: var(--color-success); color: var(--color-success-text); }
+.status-pill.slight-risk { background: var(--color-warning); color: var(--color-warning-text); }
+.status-pill.at-risk { background: var(--color-error); color: var(--color-error-text); }
+
+.grade-summary {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.course-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.circular-progress {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 4px solid var(--active-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+/* Card Body */
+.card-body {
+  padding: 0 24px 24px;
+  border-top: var(--border-base);
+  background: var(--bg-card);
+}
+
+.assessment-list h4 {
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  color: var(--text-secondary);
+  margin: 24px 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.assessment-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.assessment-list th {
+  text-align: left;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  padding: 12px;
+  border-bottom: 2px solid var(--bg-hover);
+}
+
+.assessment-list td {
+  padding: 16px 12px;
+  font-size: var(--fs-sm);
+  color: var(--text-main);
+  border-bottom: var(--border-base);
+}
+
+.type-tag {
+  background: var(--color-info);
+  color: var(--color-info-text);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pending { color: #94a3b8; font-style: italic; }
+
+.btn-icon-delete {
+  background: none;
+  border: none;
+  color: var(--text-disabled);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-icon-delete:hover { color: var(--color-error-text); }
+
+.btn-add-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px dashed var(--border-color);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-add-inline:hover {
+  border-color: var(--active-accent);
+  color: var(--active-accent);
+  background: var(--bg-hover);
+}
+
+/* Add Assessment Form */
+.add-assessment-form {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: var(--border-base);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.add-assessment-form input, .add-assessment-form select {
+  padding: 10px 14px;
+  border: var(--border-base);
+  border-radius: 10px;
+  font-size: 13px;
+  outline: none;
+  background: var(--bg-hover);
+  color: var(--text-main);
+}
+
+.form-btns {
+  grid-column: span 4;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-save {
+  background: var(--active-accent);
+  color: var(--text-on-accent);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--active-accent) 25%, transparent);
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--active-accent) 35%, transparent);
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: var(--bg-hover);
+  color: var(--text-main);
+}
+
+/* Required Average Box */
+.required-avg-box {
+  margin-top: 32px;
+  background: linear-gradient(135deg, var(--bg-hover) 0%, var(--color-info) 100%);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: var(--border-base);
+}
+
+.required-avg-box svg { color: var(--active-accent); }
+
+.box-content span { font-size: var(--fs-sm); color: var(--text-secondary); }
+
+.req-val {
+  font-size: var(--fs-2xl);
+  font-weight: 900;
+  color: var(--text-main);
+  margin-left: 8px;
+}
+
+/* Recovery Mode Banner */
+.recovery-mode-banner {
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: slideIn 0.4s ease;
+}
+
+.recovery-mode-banner svg {
+  color: var(--color-warning-text);
+}
+
+.banner-content strong {
+  display: block;
+  font-size: 14px;
+  color: var(--color-warning-text);
+  margin-bottom: 2px;
+}
+
+.banner-content p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Required Average Box Variants */
+.required-avg-box[data-unreachable="true"] {
+  background: rgba(239, 68, 68, 0.05);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.required-avg-box[data-unreachable="true"] svg {
+  color: var(--color-error-text);
+}
+
+.required-avg-box[data-unreachable="true"] .req-val {
+  color: var(--color-error-text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  background: var(--bg-hover);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+}
+.empty-state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 80px 40px;
+  background: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
+
+.empty-state-card p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.gpa-edit-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--bg-hover);
+  width: 100px;
+  text-align: center;
+  font-family: inherit;
+  font-weight: 900;
+  color: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.gpa-edit-input:focus {
+  border-color: var(--active-accent);
+}

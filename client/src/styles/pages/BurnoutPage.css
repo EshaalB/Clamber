@@ -1,0 +1,471 @@
+/* BurnoutPage.css — Compact, theme-aware layout */
+
+/* Bento Grid */
+.burnout-bento-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.bento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+
+.bento-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.risk-gauge-card {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(circle at top right, color-mix(in srgb, var(--active-accent) 5%, transparent), transparent 40%), var(--bg-card);
+}
+
+.gauge-header-v2 {
+  margin-bottom: 12px;
+  align-self: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.gauge-header-v2 h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.gauge-header-v2 p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.gauge-container {
+  margin: 8px 0;
+  position: relative;
+}
+
+.gauge-svg-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.gauge-content {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-number {
+  font-size: 40px;
+  font-weight: 950;
+  line-height: 0.8;
+  color: var(--text-main);
+}
+
+.score-total {
+  font-size: 10px;
+  color: var(--text-disabled);
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.risk-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.risk-badge.high { background: var(--color-error); color: var(--color-error-text); }
+.risk-badge.medium { background: var(--color-warning); color: var(--color-warning-text); }
+.risk-badge.low { background: var(--color-success); color: var(--color-success-text); }
+
+.risk-description {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 400px;
+  margin-top: 12px;
+}
+
+/* Crisis Alert */
+.crisis-alert {
+  margin-top: 16px;
+  background: var(--color-error);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 14px;
+  width: 100%;
+  text-align: left;
+}
+
+.crisis-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-error-text);
+  margin-bottom: 6px;
+}
+
+.crisis-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.crisis-btn {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-error-text);
+  text-decoration: underline;
+}
+
+/* Wellness Form Card */
+.wellness-form-card {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.card-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.checkin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkin-form .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-header label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.input-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--active-accent);
+}
+
+.checkin-form input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 100px;
+  background: var(--bg-secondary);
+  outline: none;
+  cursor: pointer;
+}
+
+.checkin-form input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: var(--active-accent);
+  cursor: grab;
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 0 0 2px var(--active-accent), 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.15s;
+}
+
+.checkin-form input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.checkin-form input[type=range]::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: var(--active-accent);
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 0 0 2px var(--active-accent), 0 2px 6px rgba(0,0,0,0.15);
+  cursor: grab;
+}
+
+.checkin-form input[type=range]::-moz-range-track {
+  height: 6px;
+  border-radius: 100px;
+  background: var(--bg-secondary);
+}
+
+.btn-save-checkin {
+  margin-top: 8px;
+  background: var(--active-accent);
+  color: var(--text-main);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save-checkin:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Factors Card */
+.factors-card {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.factors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.factor-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.factor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.factor-lbl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.factor-val {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.factor-bar-track {
+  height: 6px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.factor-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* Trend Card */
+.trend-card {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.warnings-card {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.warnings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.warning-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--color-warning);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.warning-icon {
+  color: var(--color-warning-text);
+  flex-shrink: 0;
+}
+
+.warning-item p {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-warning-text);
+  line-height: 1.4;
+}
+
+.system-green {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.system-green p {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+
+.period-pills {
+  display: flex;
+  background: var(--bg-secondary);
+  padding: 3px;
+  border-radius: 8px;
+}
+
+.period-pill {
+  border: none;
+  background: none;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.period-pill.active {
+  background: var(--bg-card);
+  color: var(--active-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.trend-viz {
+  width: 100%;
+}
+
+.trend-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-disabled);
+}
+
+.advice-card {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* Advice Card */
+.advice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.advice-item {
+  display: flex;
+  gap: 10px;
+}
+
+.advice-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--active-accent);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.advice-item p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.no-advice {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+  .burnout-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .risk-gauge-card, .trend-card, .wellness-form-card, .factors-card, .advice-card, .warnings-card {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  .factors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .factors-grid {
+    grid-template-columns: 1fr;
+  }
+}

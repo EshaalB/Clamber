@@ -1,0 +1,117 @@
+/* AuthPage.css: Shared styles for login, signup, and account recovery views. */
+
+.auth-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-page);
+  padding: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.auth-card {
+  background-color: var(--color-white);
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.auth-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  margin-bottom: 8px;
+  color: var(--color-mine-shaft);
+}
+
+.auth-subtitle {
+  font-size: var(--fs-sm);
+  color: var(--color-silver);
+  margin-bottom: 32px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--color-mine-shaft);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.6px solid var(--color-gallery);
+  border-radius: 12px;
+  font-size: var(--fs-sm);
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--active-accent);
+}
+
+.auth-btn-primary {
+  background-color: var(--active-accent);
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: var(--color-silver);
+  font-size: var(--fs-xs);
+}
+
+.auth-divider::before, .auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-gallery);
+}
+
+.btn-google {
+  width: 100%;
+  padding: 12px;
+  border: 1.6px solid var(--color-gallery);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 500;
+  color: var(--color-mine-shaft);
+}
+
+.auth-footer {
+  margin-top: 32px;
+  font-size: var(--fs-sm);
+  color: var(--color-silver);
+}
+
+.auth-link {
+  color: var(--active-accent);
+  font-weight: 600;
+}

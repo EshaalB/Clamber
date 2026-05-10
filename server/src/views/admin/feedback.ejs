@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clamber Admin — Feedback</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; }
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; background: #1e293b; padding: 24px 16px; border-right: 1px solid #334155; }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; margin-bottom: 40px; padding: 0 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .nav-item:hover, .nav-item.active { background: #334155; color: #e2e8f0; }
+    .main { flex: 1; padding: 32px; }
+    h1 { font-size: 28px; font-weight: 800; margin-bottom: 24px; }
+    .section { background: #1e293b; border-radius: 14px; padding: 24px; border: 1px solid #334155; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: 12px; color: #64748b; padding: 10px 12px; border-bottom: 1px solid #334155; text-transform: uppercase; }
+    td { padding: 12px; font-size: 14px; border-bottom: 1px solid #1e293b44; }
+    tr:hover td { background: #334155; }
+    .badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .badge-pending { background: #f5b89a20; color: #f5b89a; }
+    .badge-reviewed { background: #7cb9e820; color: #7cb9e8; }
+    .badge-resolved { background: #98d4bb20; color: #98d4bb; }
+    .status-form { display: flex; gap: 5px; }
+    .status-select { background: #1e293b; border: 1px solid #334155; color: #fff; font-size: 11px; padding: 2px 4px; border-radius: 4px; }
+    .btn-save { background: #3b82f6; border: none; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7cb9e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 2 15H2L8 3z"/></svg>
+        Clamber
+      </div>
+      <a href="/admin/dashboard" class="nav-item">📊 Dashboard</a>
+      <a href="/admin/users" class="nav-item">👥 Users</a>
+      <a href="/admin/tasks" class="nav-item">✅ Tasks</a>
+      <a href="/admin/courses" class="nav-item">🎓 Courses</a>
+      <a href="/admin/feedback" class="nav-item active">💬 Feedback</a>
+      <a href="/admin/logs" class="nav-item">📋 System Logs</a>
+      <a href="/admin/logout" class="nav-item" style="color: #ef4444;">🚪 Logout</a>
+    </aside>
+    <main class="main">
+      <h1>Feedback Review</h1>
+      <div class="section">
+        <table>
+          <thead><tr><th>User</th><th>Type</th><th>Message</th><th>Rating</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody>
+            <% feedback.forEach(f => { %>
+              <tr>
+                <td><%= f.userId ? f.userId.name : 'Unknown' %></td>
+                <td><%= f.type %></td>
+                <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="<%= f.message %>"><%= f.message %></td>
+                <td><%= f.rating ? '⭐'.repeat(f.rating) : '—' %></td>
+                <td><span class="badge badge-<%= f.status %>"><%= f.status %></span></td>
+                <td style="color:#64748b;"><%= new Date(f.createdAt).toLocaleDateString() %></td>
+                <td>
+                  <form class="status-form" action="/admin/feedback/<%= f._id %>/status" method="POST">
+                    <select name="status" class="status-select">
+                      <option value="pending" <%= f.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                      <option value="reviewed" <%= f.status === 'reviewed' ? 'selected' : '' %>>Reviewed</option>
+                      <option value="resolved" <%= f.status === 'resolved' ? 'selected' : '' %>>Resolved</option>
+                    </select>
+                    <button type="submit" class="btn-save">Save</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+            <% if (feedback.length === 0) { %>
+              <tr><td colspan="7" style="text-align:center; color:#64748b; padding:32px;">No feedback yet</td></tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

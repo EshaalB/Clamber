@@ -1,0 +1,142 @@
+/* QuickAddTask.css - Full Form Modal */
+
+.quick-add-container {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  border: var(--border-base);
+  width: 100%;
+}
+
+.quick-add-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.quick-add-header h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.btn-close:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-main);
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.quick-add-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: var(--border-base);
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: var(--bg-hover);
+  color: var(--text-main);
+  margin-bottom: 16px;
+  transition: all 0.2s;
+}
+
+.quick-add-input:focus {
+  outline: none;
+  border-color: var(--active-accent);
+  background-color: var(--bg-card);
+}
+
+.quick-add-select {
+  width: 100%;
+  padding: 12px 14px;
+  border: var(--border-base);
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: var(--bg-hover);
+  color: var(--text-main);
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-add-select:focus {
+  outline: none;
+  border-color: var(--active-accent);
+  background-color: var(--bg-card);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-add-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: var(--border-base);
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  border: var(--border-base);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: var(--bg-hover);
+}
+
+.btn-submit-task {
+  padding: 10px 24px;
+  background-color: var(--active-accent);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-submit-task:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-submit-task:hover:not(:disabled) {
+  opacity: 0.9;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clamber Admin — Logs</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; }
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; background: #1e293b; padding: 24px 16px; border-right: 1px solid #334155; }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; margin-bottom: 40px; padding: 0 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .nav-item:hover, .nav-item.active { background: #334155; color: #e2e8f0; }
+    .main { flex: 1; padding: 32px; }
+    h1 { font-size: 28px; font-weight: 800; margin-bottom: 24px; }
+    .section { background: #1e293b; border-radius: 14px; padding: 24px; border: 1px solid #334155; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 700px; }
+    th { text-align: left; font-size: 12px; color: #64748b; padding: 10px 12px; border-bottom: 1px solid #334155; text-transform: uppercase; }
+    td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid #1e293b44; font-family: 'Consolas', monospace; }
+    tr:hover td { background: #334155; }
+    .action-badge { padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #334155; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7cb9e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 2 15H2L8 3z"/></svg>
+        Clamber
+      </div>
+      <a href="/admin/dashboard" class="nav-item">📊 Dashboard</a>
+      <a href="/admin/users" class="nav-item">👥 Users</a>
+      <a href="/admin/tasks" class="nav-item">✅ Tasks</a>
+      <a href="/admin/courses" class="nav-item">🎓 Courses</a>
+      <a href="/admin/feedback" class="nav-item">💬 Feedback</a>
+      <a href="/admin/logs" class="nav-item active">📋 System Logs</a>
+      <a href="/admin/logout" class="nav-item" style="color: #ef4444;">🚪 Logout</a>
+    </aside>
+    <main class="main">
+      <h1>System Logs</h1>
+      <div class="section">
+        <table>
+          <thead><tr><th>Timestamp</th><th>Action</th><th>Method</th><th>URL</th><th>Status</th><th>IP</th></tr></thead>
+          <tbody>
+            <% logs.forEach(l => { %>
+              <tr>
+                <td style="color:#64748b;"><%= new Date(l.createdAt).toLocaleString() %></td>
+                <td><span class="action-badge"><%= l.action %></span></td>
+                <td><%= l.method || '—' %></td>
+                <td style="max-width:250px; overflow:hidden; text-overflow:ellipsis;"><%= l.url || '—' %></td>
+                <td><%= l.statusCode || '—' %></td>
+                <td style="color:#64748b;"><%= l.ip || '—' %></td>
+              </tr>
+            <% }) %>
+            <% if (logs.length === 0) { %>
+              <tr><td colspan="6" style="text-align:center; color:#64748b; padding:32px;">No logs yet</td></tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

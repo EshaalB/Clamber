@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clamber Admin — Tasks</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; }
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; background: #1e293b; padding: 24px 16px; border-right: 1px solid #334155; }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; margin-bottom: 40px; padding: 0 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .nav-item:hover, .nav-item.active { background: #334155; color: #e2e8f0; }
+    .main { flex: 1; padding: 32px; }
+    .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    h1 { font-size: 28px; font-weight: 800; }
+    .btn-add { padding: 10px 20px; background: #10b981; border: none; border-radius: 8px; color: white; font-weight: 600; cursor: pointer; }
+    .search-bar { display: flex; gap: 12px; margin-bottom: 24px; }
+    .search-bar input { flex: 1; padding: 12px 16px; background: #1e293b; border: 1px solid #334155; border-radius: 10px; color: #e2e8f0; font-size: 14px; outline: none; }
+    .search-bar button { padding: 12px 24px; background: #334155; border: 1px solid #334155; border-radius: 10px; color: white; font-weight: 600; cursor: pointer; }
+    .section { background: #1e293b; border-radius: 14px; padding: 24px; border: 1px solid #334155; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: 12px; color: #64748b; padding: 10px 12px; border-bottom: 1px solid #334155; text-transform: uppercase; }
+    td { padding: 12px; font-size: 14px; border-bottom: 1px solid #1e293b44; }
+    tr:hover td { background: #334155; }
+    .badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .badge-high { background: #ef444420; color: #ef4444; }
+    .badge-medium { background: #f59e0b20; color: #f59e0b; }
+    .badge-low { background: #3b82f620; color: #3b82f6; }
+    .actions { display: flex; gap: 8px; }
+    .btn-edit { color: #3b82f6; background: none; border: none; cursor: pointer; font-size: 12px; font-weight: 600; }
+    .btn-delete { color: #ef4444; background: none; border: none; cursor: pointer; font-size: 12px; font-weight: 600; }
+    
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; z-index: 100; }
+    .modal.active { display: flex; }
+    .modal-content { background: #1e293b; border: 1px solid #334155; padding: 32px; border-radius: 16px; width: 450px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; color: #94a3b8; margin-bottom: 8px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; outline: none; }
+    .form-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+    .btn-cancel { padding: 10px 16px; background: #334155; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7cb9e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 2 15H2L8 3z"/></svg>
+        Clamber
+      </div>
+      <a href="/admin/dashboard" class="nav-item">📊 Dashboard</a>
+      <a href="/admin/users" class="nav-item">👥 Users</a>
+      <a href="/admin/tasks" class="nav-item active">✅ Tasks</a>
+      <a href="/admin/courses" class="nav-item">🎓 Courses</a>
+      <a href="/admin/feedback" class="nav-item">💬 Feedback</a>
+      <a href="/admin/logs" class="nav-item">📋 System Logs</a>
+      <a href="/admin/logout" class="nav-item" style="color: #ef4444;">🚪 Logout</a>
+    </aside>
+
+    <main class="main">
+      <div class="header-row">
+        <h1>Task Management</h1>
+        <button class="btn-add" onclick="showAddModal()">+ Add Task</button>
+      </div>
+
+      <form class="search-bar" method="GET" action="/admin/tasks">
+        <input type="text" name="search" placeholder="Search tasks by title..." value="<%= search %>">
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="section">
+        <table>
+          <thead><tr><th>User</th><th>Title</th><th>Subject</th><th>Priority</th><th>Status</th><th>Due</th><th>Actions</th></tr></thead>
+          <tbody>
+            <% tasks.forEach(t => { %>
+              <tr>
+                <td><%= t.userId ? t.userId.name : 'Unknown' %></td>
+                <td><%= t.title %></td>
+                <td><%= t.subject || '—' %></td>
+                <td><span class="badge badge-<%= t.priority.toLowerCase() %>"><%= t.priority %></span></td>
+                <td><%= t.status %></td>
+                <td style="color:#64748b;"><%= t.dueDate ? new Date(t.dueDate).toLocaleDateString() : '—' %></td>
+                <td class="actions">
+                  <button class="btn-edit" onclick="showEditModal('<%= JSON.stringify(t) %>')">Edit</button>
+                  <form action="/admin/tasks/<%= t._id %>/delete" method="POST" onsubmit="return confirm('Delete task?')">
+                    <button type="submit" class="btn-delete">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div id="addModal" class="modal">
+    <div class="modal-content">
+      <h2>Add New Task</h2>
+      <form action="/admin/tasks" method="POST">
+        <div class="form-group">
+          <label>Assign to User</label>
+          <select name="userId" required>
+            <% users.forEach(u => { %>
+              <option value="<%= u._id %>"><%= u.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Task Title</label>
+          <input type="text" name="title" required>
+        </div>
+        <div class="form-group">
+          <label>Subject/Category</label>
+          <input type="text" name="subject">
+        </div>
+        <div class="form-group">
+          <label>Priority</label>
+          <select name="priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Due Date</label>
+          <input type="date" name="dueDate">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" onclick="hideModals()">Cancel</button>
+          <button type="submit" class="btn-add">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Task Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <h2>Edit Task</h2>
+      <form id="editForm" action="" method="POST">
+        <div class="form-group">
+          <label>Task Title</label>
+          <input type="text" name="title" id="editTitle" required>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" name="subject" id="editSubject">
+        </div>
+        <div class="form-group">
+          <label>Priority</label>
+          <select name="priority" id="editPriority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select name="status" id="editStatus">
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Due Date</label>
+          <input type="date" name="dueDate" id="editDue">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" onclick="hideModals()">Cancel</button>
+          <button type="submit" class="btn-add" style="background: #3b82f6;">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showAddModal() { document.getElementById('addModal').classList.add('active'); }
+    function hideModals() { 
+      document.getElementById('addModal').classList.remove('active'); 
+      document.getElementById('editModal').classList.remove('active'); 
+    }
+    function showEditModal(taskStr) {
+      const task = JSON.parse(taskStr);
+      const form = document.getElementById('editForm');
+      form.action = `/admin/tasks/${task._id}`;
+      document.getElementById('editTitle').value = task.title;
+      document.getElementById('editSubject').value = task.subject || '';
+      document.getElementById('editPriority').value = task.priority;
+      document.getElementById('editStatus').value = task.status;
+      if (task.dueDate) {
+        document.getElementById('editDue').value = new Date(task.dueDate).toISOString().split('T')[0];
+      }
+      document.getElementById('editModal').classList.add('active');
+    }
+  </script>
+</body>
+</html>

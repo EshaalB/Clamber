@@ -1,0 +1,174 @@
+/**
+ * Clamber Global Variables
+ * Defines the pastel palette, typography, and theme tokens.
+ */
+
+:root {
+  /* Pastel Accent Palette */
+  /* Ultra-Soft Pastel Accent Palette */
+  --accent-pink: #fdf2f8;
+  --accent-pink-hover: #fce7f3;
+  --accent-blue: #eff6ff;
+  --accent-blue-hover: #dbeafe;
+  --accent-lavender: #f5f3ff;
+  --accent-lavender-hover: #ede9fe;
+  --accent-mint: #f0fdf4;
+  --accent-mint-hover: #dcfce7;
+  --accent-peach: #fff7ed;
+  --accent-peach-hover: #ffedd5;
+
+  /* Deep Pastel Variants (for text/icons) - Ultra Softened */
+  --accent-blue-deep: #a5c4dd;
+  --accent-pink-deep: #ebbac9;
+  --accent-lavender-deep: #b9b3d4;
+  --accent-mint-deep: #a8d1ba;
+  --accent-peach-deep: #ebc0ad;
+
+  /* Icon Specific vibrant colors */
+  --icon-mint: var(--accent-mint-deep);
+  --icon-pink: var(--accent-pink-deep);
+  --icon-blue: var(--accent-blue-deep);
+  --icon-peach: var(--accent-peach-deep);
+  --icon-lavender: var(--accent-lavender-deep);
+
+  /* Default Active Accent (Blue Theme - Airy & Desaturated) */
+  --active-accent: #93b9d6;
+  --active-accent-hover: #a5c4dd;
+  --text-on-accent: #1e293b;
+
+  /* Semantic Status Tokens (Pastel) */
+  --color-success: #f0fdf4;
+  --color-success-text: #166534;
+  --color-warning: #fffbeb;
+  --color-warning-text: #92400e;
+  --color-error: #fef2f2;
+  --color-error-text: #991b1b;
+  --color-info: #eff6ff;
+  --color-info-text: #1e40af;
+
+  /* Semantic UI Tokens (Defaults) */
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-secondary: #f1f5f9;
+  --bg-hover: #f1f5f9;
+  --bg-primary: #ffffff;
+  --text-main: #1e293b;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-disabled: #cbd5e1;
+  --border-color: #e2e8f0;
+  --border-base: 1px solid var(--border-color);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--active-accent) 28%, transparent);
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-ui: 'Plus Jakarta Sans', sans-serif;
+
+  /* Sizes */
+  --header-height: 64px;
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 80px;
+  --max-content-width: 1200px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 100px;
+  
+  /* Spacing Tokens */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+
+  /* Colors */
+  --color-white: #ffffff;
+  
+  --transition-fast: 150ms ease;
+
+  /* Font Sizes */
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 20px;
+  --fs-2xl: 24px;
+
+  /* Aliases for legacy support */
+  --color-mine-shaft: var(--text-main);
+  --color-silver: var(--text-muted);
+  --color-dove-gray: var(--text-secondary);
+  --color-gallery: var(--border-color);
+  --color-alabaster: var(--bg-hover);
+}
+
+.theme-light {
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-secondary: #f1f5f9;
+  --bg-hover: #f1f5f9;
+  --bg-primary: #ffffff;
+  --text-main: #1e293b;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --text-on-accent: #1e293b;
+}
+
+.theme-dark {
+  --bg-page: #09090b;
+  --bg-card: #141417;
+  --bg-sidebar: #141417;
+  --bg-secondary: #1c1c22;
+  --bg-hover: #24242b;
+  --bg-primary: #141417;
+  --text-main: #f8fafc;
+  --text-primary: #f8fafc;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border-color: #27272a;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+
+  /* Soften accents for dark mode - More pastel but readable */
+  --accent-pink: rgba(244, 114, 182, 0.12);
+  --accent-blue: rgba(96, 165, 250, 0.12);
+  --accent-lavender: rgba(167, 139, 250, 0.12);
+  --accent-mint: rgba(74, 222, 128, 0.12);
+  --accent-peach: rgba(251, 146, 60, 0.12);
+
+  --accent-pink-deep: #f9a8d4;
+  --accent-blue-deep: #93c5fd;
+  --accent-lavender-deep: #c4b5fd;
+  --accent-mint-deep: #86efac;
+  --accent-peach-deep: #fdba74;
+
+  /* Semantic Status Tokens (Dark Mode) */
+  --color-success: rgba(34, 197, 94, 0.15);
+  --color-success-text: #86efac;
+  --color-warning: rgba(234, 179, 8, 0.15);
+  --color-warning-text: #fde047;
+  --color-error: rgba(239, 68, 68, 0.15);
+  --color-error-text: #fca5a5;
+  --color-info: rgba(59, 130, 246, 0.15);
+  --color-info-text: #93c5fd;
+
+  --active-accent: #93c5fd;
+  --active-accent-hover: #bfdbfe;
+  --text-on-accent: #0f172a;
+
+  /* Icon Specific vibrant colors for dark mode */
+  --icon-mint: #4ade80;
+  --icon-pink: #f472b6;
+  --icon-blue: #60a5fa;
+  --icon-peach: #fb923c;
+  --icon-lavender: #a78bfa;
+}

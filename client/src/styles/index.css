@@ -1,0 +1,22 @@
+/* Global Styles */
+@import './global/variables.css';
+@import './global/reset.css';
+@import './global/layout-shared.css';
+
+/* Layout */
+@import './layout/Header.css';
+@import './layout/Sidebar.css';
+@import './components/layout/AppLayout.css';
+
+/* Pages */
+@import './pages/LandingPage.css';
+@import './pages/AuthPage.css';
+@import './pages/OnboardingPage.css';
+@import './pages/Dashboard.css';
+@import './pages/TasksPage.css';
+@import './pages/SettingsPage.css';
+@import './pages/ProfilePage.css';
+@import './pages/GradePlannerPage.css';
+@import './pages/BurnoutPage.css';
+@import './pages/AnalyticsPage.css';
+@import './pages/AIAssistant.css';

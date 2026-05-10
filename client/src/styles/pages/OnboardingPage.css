@@ -1,0 +1,489 @@
+/* OnboardingPage.css - Theme Normalized */
+
+.onboarding-container {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 24px;
+  color: var(--text-main);
+}
+
+.onboarding-card {
+  background-color: var(--bg-card);
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: var(--border-base);
+  margin-top: 24px;
+}
+
+.onboarding-logo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 24px;
+  color: var(--text-main);
+}
+
+/* Progress Bar */
+.onboarding-progress-bar {
+  width: 100%;
+  height: 6px;
+  background-color: var(--bg-hover);
+  border-radius: 3px;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--active-accent);
+  transition: width 0.3s ease;
+}
+
+.onboarding-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.onboarding-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+/* Form Elements */
+.onboard-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.onboard-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: var(--border-base);
+  background-color: var(--bg-hover);
+  color: var(--text-main);
+  font-size: 14px;
+  margin-bottom: 20px;
+  transition: all 0.2s;
+}
+
+.onboard-input:focus {
+  outline: none;
+  border-color: var(--active-accent);
+  background-color: var(--bg-card);
+}
+
+/* Selection Cards */
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.choice-card {
+  padding: 24px;
+  border-radius: 12px;
+  border: var(--border-base);
+  background-color: var(--bg-hover);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-main);
+}
+
+.choice-card:hover {
+  border-color: var(--text-disabled);
+}
+
+.choice-card.selected {
+  border-color: var(--active-accent);
+  background-color: var(--bg-card);
+}
+
+.choice-card h5 {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 12px 0 4px;
+  color: var(--text-main);
+}
+
+.choice-card p {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Course Rows */
+.added-course-item {
+  padding: 14px 20px;
+  background-color: var(--bg-hover);
+  border-radius: 10px;
+  border: var(--border-base);
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-info h5 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.course-info p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Footer Buttons */
+.step-footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-onboard-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.step-indicator {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.btn-onboard-continue {
+  padding: 10px 24px;
+  background-color: var(--active-accent);
+  color: white;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.skip-link {
+  display: block;
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Option List */
+.option-list-item {
+  padding: 16px 20px;
+  border: var(--border-base);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-main);
+}
+
+.option-list-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.option-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--bg-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--active-accent);
+}
+
+.option-text h5 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.option-text p {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.option-check {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-list-item.selected .option-check {
+  background-color: var(--active-accent);
+  border-color: var(--active-accent);
+}
+
+/* GPA Selector */
+.gpa-btns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.gpa-btn {
+  padding: 12px;
+  border-radius: 10px;
+  border: var(--border-base);
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.gpa-btn.selected {
+  background-color: var(--accent-mint-deep);
+  color: white;
+  border-color: var(--accent-mint-deep);
+}
+
+.stress-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.stress-btn {
+  flex: 1;
+  padding: 16px;
+  border-radius: 10px;
+  border: var(--border-base);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+}
+
+.stress-btn.selected {
+  background-color: var(--active-accent);
+  color: white;
+  border-color: var(--active-accent);
+}
+
+/* Additions for inline style removal */
+.progress-fill {
+  width: var(--progress, 0%);
+}
+
+.onboard-error {
+  background: var(--color-error);
+  color: var(--color-error-text);
+  padding: 12px 16px;
+  borderRadius: 10px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.btn-onboard-back.hidden {
+  visibility: hidden;
+}
+
+.onboard-input-group {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.onboard-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-disabled);
+}
+
+.onboard-input.with-icon {
+  padding-left: 48px;
+  margin-bottom: 0;
+}
+
+.course-list-scroll {
+  margin-bottom: 24px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.btn-remove-course {
+  background: none;
+  border: none;
+  color: var(--color-error-text);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.add-course-section {
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px dashed var(--active-accent);
+}
+
+.add-course-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--active-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.credit-hour-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: var(--bg-card);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.btn-credit-adjust {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.credit-display {
+  text-align: center;
+}
+
+.credit-number {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--active-accent);
+}
+
+.credit-label {
+  font-size: 10px;
+  color: var(--text-disabled);
+}
+
+.btn-add-course-confirm {
+  width: 100%;
+  padding: 12px;
+  background-color: color-mix(in srgb, var(--active-accent) 15%, transparent);
+  color: var(--active-accent);
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-add-course-confirm:hover {
+  background-color: color-mix(in srgb, var(--active-accent) 25%, transparent);
+}
+
+.gpa-display-section {
+  text-align: center;
+  margin: 32px 0;
+}
+
+.gpa-display-label {
+  font-size: 12px;
+  color: var(--text-disabled);
+  margin-bottom: 4px;
+}
+
+.gpa-display-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--active-accent);
+}
+
+.choice-grid.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.choice-card.compact {
+  padding: 12px;
+}
+
+.choice-title-compact {
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.sleep-range-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.onboard-range-input {
+  flex: 1;
+}
+
+.sleep-value-badge {
+  padding: 8px 16px;
+  background-color: var(--bg-secondary);
+  color: var(--active-accent);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.stress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-disabled);
+  margin-top: -24px;
+}
+
+.option-list-item.prayerReminders .option-icon-box { background: var(--accent-blue); color: var(--accent-blue-deep); }
+.option-list-item.familyTime .option-icon-box { background: var(--accent-lavender); color: var(--accent-lavender-deep); }
+.option-list-item.partTimeJob .option-icon-box { background: var(--accent-mint); color: var(--accent-mint-deep); }
+
