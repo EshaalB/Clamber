@@ -62,13 +62,7 @@ const BurnoutPage: React.FC = () => {
     }));
   }, [trend]);
 
-  if (loading && !data) {
-    return (
-      <div className="burnout-container loading-state">
-        <Loader2 className="spin" size={48} color="var(--active-accent)" />
-      </div>
-    );
-  }
+  // Initial mount is instant.
 
   const score = data?.score || 0;
   const riskLevel = data?.riskLevel || 'Low';

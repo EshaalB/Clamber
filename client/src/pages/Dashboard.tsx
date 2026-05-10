@@ -89,13 +89,8 @@ const Dashboard: React.FC = () => {
 
   const firstName = useMemo(() => (user?.name || 'Student').split(' ')[0], [user?.name]);
 
-  if (loading && !stats) {
-    return (
-      <div className="dashboard-board-container dashboard-loading">
-        <Loader2 className="spin" size={48} color="var(--active-accent)" />
-      </div>
-    );
-  }
+  // No longer returning a full-page loader here to keep navigation instant.
+  // The layout will render immediately and data will pop in.
 
   return (
     <div className="dashboard-board-container">

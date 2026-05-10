@@ -94,15 +94,6 @@ const AdminPage: React.FC = () => {
 
   const COLORS = ['#7CB9E8', '#A0CED9', '#FAD2E1', '#E2ECE9'];
 
-  if (loading && !stats) {
-    return (
-      <div className="admin-loading-screen">
-        <Loader2 className="spin" size={48} color="var(--active-accent)" />
-        <p>Initializing Secure Admin Terminal...</p>
-      </div>
-    );
-  }
-
   return (
     <div className="admin-master-container">
       <header className="admin-masthead">

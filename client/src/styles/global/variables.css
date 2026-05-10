@@ -172,3 +172,22 @@
   --icon-peach: #fb923c;
   --icon-lavender: #a78bfa;
 }
+
+/* ─── Global Animation Utilities ─── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Universal Loader Centerer */
+.loader-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  width: 100%;
+}

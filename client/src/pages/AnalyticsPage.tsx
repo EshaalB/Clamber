@@ -74,13 +74,7 @@ const AnalyticsPage: React.FC = () => {
     window.print();
   }, []);
 
-  if (loading && !data) {
-    return (
-      <div className="analytics-container loading-state">
-        <Loader2 className="spin" size={48} color="var(--active-accent)" />
-      </div>
-    );
-  }
+  // Initial mount is instant.
 
   return (
     <div className="analytics-container">

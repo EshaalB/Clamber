@@ -91,13 +91,7 @@ const TasksPage: React.FC = () => {
     });
   }, [tasks, search, filterStatus, filterPriority]);
 
-  if (loading && tasks.length === 0) {
-    return (
-      <div className="tasks-loading">
-        <Loader2 className="spin" size={48} color="var(--active-accent)" />
-      </div>
-    );
-  }
+  // Initial mount is instant.
 
   return (
     <div className="tasks-board-container">
