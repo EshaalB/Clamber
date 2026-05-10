@@ -28,8 +28,8 @@ const AdvisorPage = lazy(() => import('./pages/AdvisorPage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 const PageLoader = () => (
-  <div style={{ display: 'flex', height: '100vh', width: '100vw', alignItems: 'center', justifyContent: 'center' }}>
-    <Loader2 className="spin" size={32} color="var(--active-accent)" />
+  <div className="full-page-loader">
+    <Loader2 className="spin" size={48} color="var(--active-accent)" />
   </div>
 );
 

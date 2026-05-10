@@ -17,10 +17,11 @@
 }
 
 .dashboard-loading {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  min-height: calc(100vh - 160px);
 }
 
 .dashboard-main-content {

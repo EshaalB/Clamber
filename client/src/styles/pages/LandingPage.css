@@ -1,3 +1,22 @@
+.full-page-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-page);
+  z-index: 9999;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.app-root {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
 .landing-page {
   width: 100%;
   min-height: 100vh;
@@ -677,12 +696,21 @@ section {
   .footer-pitch { max-width: 100%; }
   .footer-bottom { flex-direction: column; gap: 32px; }
   .footer-badges { flex-direction: column; gap: 16px; align-items: center; }
-  .hero-title { font-size: 48px; }
+  .hero-title { font-size: 42px; letter-spacing: -1px; }
+  .hero-description { font-size: 16px; }
+  .hero-cta { flex-direction: column; width: 100%; }
+  .hero-cta button { width: 100%; justify-content: center; }
+  .section-title { font-size: 32px; }
+  .section-subtitle { font-size: 14px; }
   .testimonials-masonry { grid-template-columns: 1fr; }
-  .roadmap-items { grid-template-columns: 1fr; }
+  .roadmap-items { grid-template-columns: 1fr; flex-direction: column; gap: 40px; }
   .features-grid { grid-template-columns: 1fr; }
   .stats-grid-relative { grid-template-columns: 1fr; }
-}  
+  .deep-dive-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .deep-dive-image { order: -1; }
+  .feature-deep-dive { padding: 60px 24px; }
+  .partners-grid { gap: 30px; }
+}
 
 .roadmap-items {
   display: flex;
