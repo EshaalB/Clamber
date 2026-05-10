@@ -97,15 +97,17 @@ app.use('/api/v1', apiRoutes);
 // ─── Admin Routes ───
 app.use('/admin', adminRoutes);
 
-// ─── Health Check ───
-app.get('/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-    environment: env.NODE_ENV,
+// ─── Frontend Static Files (Production) ───
+if (process.env.NODE_ENV === 'production' || env.NODE_ENV === 'production') {
+  const distPath = path.join(__dirname, '../../client/dist');
+  app.use(express.static(distPath));
+  
+  // Handle SPA routing: serve index.html for any unknown non-API routes
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(distPath, 'index.html'));
   });
-});
+}
 
 // ─── 404 Handler ───
 app.all('*', (req, res, next) => {
