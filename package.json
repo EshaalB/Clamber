@@ -11,7 +11,6 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "install": "npm install --workspaces",
     "build-frontend": "npm run build --workspace=client",
     "start": "node index.js"
   }
