@@ -12,22 +12,28 @@ const { initializeSocket } = require('./infrastructure/socket/socket');
 let server;
 
 const startServer = async () => {
-  // Connect to MongoDB
-  await connectDB();
+  try {
+    // Connect to MongoDB
+    logger.info('Connecting to MongoDB...');
+    await connectDB();
+    logger.info('✅ Database connected successfully');
 
-  // Create HTTP server
-  const httpServer = http.createServer(app);
+    // Create HTTP server
+    const httpServer = http.createServer(app);
 
-  // Initialize Socket.io
-  initializeSocket(httpServer);
+    // Initialize Socket.io
+    initializeSocket(httpServer);
 
-  // Start HTTP server
-  server = httpServer.listen(env.PORT, () => {
-    logger.info(`🚀 Clamber API + Realtime running on port ${env.PORT} [${env.NODE_ENV}]`);
-    logger.info(`   Health: http://localhost:${env.PORT}/health`);
-    logger.info(`   API:    http://localhost:${env.PORT}/api/v1`);
-    logger.info(`   Admin:  http://localhost:${env.PORT}/admin`);
-  });
+    // Start HTTP server
+    const port = process.env.PORT || env.PORT || 5000;
+    server = httpServer.listen(port, '0.0.0.0', () => {
+      logger.info(`🚀 Clamber API + Realtime running on port ${port} [${env.NODE_ENV}]`);
+      logger.info(`   Health: /health`);
+    });
+  } catch (error) {
+    logger.error('❌ FATAL STARTUP ERROR:', error);
+    process.exit(1);
+  }
 };
 
 // ─── Graceful Shutdown ───
