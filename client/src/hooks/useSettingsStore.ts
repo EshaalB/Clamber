@@ -23,11 +23,11 @@ export const useSettingsStore = create<SettingsState>()(
   persist(
     (set) => ({
       theme: 'light',
-      accentColor: '#fbcfe8', // Pastel Pink
+      accentColor: '#93b9d6', // Default blue — matches variables.css
       fontSize: 'base',
       user: {
-        name: 'Eshaal Rehmatullah',
-        title: 'FAST NUCES, 3rd year BSCS',
+        name: 'Student',
+        title: 'Set your academic identity',
       },
       setTheme: (theme) => {
         set({ theme });

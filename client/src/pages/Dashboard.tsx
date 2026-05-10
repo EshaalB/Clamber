@@ -89,6 +89,14 @@ const Dashboard: React.FC = () => {
 
   const firstName = useMemo(() => (user?.name || 'Student').split(' ')[0], [user?.name]);
 
+  const greeting = useMemo(() => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) return 'Good morning';
+    if (hour >= 12 && hour < 17) return 'Good afternoon';
+    if (hour >= 17 && hour < 21) return 'Good evening';
+    return 'Good night';
+  }, []);
+
   // No longer returning a full-page loader here to keep navigation instant.
   // The layout will render immediately and data will pop in.
 
@@ -96,7 +104,7 @@ const Dashboard: React.FC = () => {
     <div className="dashboard-board-container">
       <header className="board-header">
         <div className="header-left-group">
-          <h1>Good morning, {firstName}!</h1>
+          <h1>{greeting}, {firstName}!</h1>
           <p>You've completed {stats?.completionRate || 0}% of your goals this week.</p>
         </div>
         <div className="header-actions-group">

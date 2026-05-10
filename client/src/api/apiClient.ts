@@ -5,7 +5,7 @@
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://clamber-uh2nq.sevalla.app/api/v1';
-console.log('🔗 Clamber API Endpoint:', API_BASE_URL);
+if (import.meta.env.DEV) console.log('🔗 Clamber API Endpoint:', API_BASE_URL);
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,

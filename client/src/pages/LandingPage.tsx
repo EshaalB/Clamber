@@ -149,7 +149,7 @@ const LandingPage: React.FC = () => {
       <section className="feature-deep-dive">
         <div className="deep-dive-grid">
           <div className="deep-dive-image">
-            <img src={heroIllustration} alt="Clamber Product Dashboard Showcase" />
+            <img src={heroIllustration} alt="Clamber Product Dashboard Showcase" loading="lazy" />
           </div>
           <div className="deep-dive-text">
             <h3>Designed for the modern student.</h3>
@@ -277,7 +277,7 @@ const FeatureCard = memo(({ icon, title, desc, variant }: any) => (
 const TestimonialCard = memo(({ name, uni, img, text, variant }: any) => (
   <div className={`testimonial-card-v2 variant-${variant}`}>
     <div className="t-avatar-wrapper">
-      <img src={img} alt={name} />
+      <img src={img} alt={name} loading="lazy" />
     </div>
     <div className="t-content">
       <h5>{name}</h5>

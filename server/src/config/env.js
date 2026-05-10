@@ -17,8 +17,8 @@ const env = {
   // JWT
   JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET || 'dev_access_secret',
   JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET || 'dev_refresh_secret',
-  JWT_ACCESS_EXPIRES_IN: process.env.JWT_ACCESS_EXPIRES_IN || '24h',
-  JWT_REFRESH_EXPIRES_IN: process.env.JWT_REFRESH_EXPIRES_IN || '24h',
+  JWT_ACCESS_EXPIRES_IN: process.env.JWT_ACCESS_EXPIRES_IN || '15m',
+  JWT_REFRESH_EXPIRES_IN: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
 
   // Email (Use Gmail with App Password for free real emails)
   SMTP_HOST: process.env.SMTP_HOST || 'smtp.ethereal.email',
@@ -41,7 +41,7 @@ const env = {
 
   // Admin
   ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'admin@clamber.com',
-  ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || 'admin123',
+  ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || '',
 
   isDev: () => env.NODE_ENV === 'development',
   isProd: () => env.NODE_ENV === 'production',
