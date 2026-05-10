@@ -147,7 +147,7 @@ const TasksPage: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredTasks.length === 0 ? (
+              {!loading && filteredTasks.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="empty-table-row">
                     <div className="empty-state-content">

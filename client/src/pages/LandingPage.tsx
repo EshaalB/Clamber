@@ -78,9 +78,9 @@ const LandingPage: React.FC = () => {
             <div className="trust-pill"><CheckCircle2 size={14} /> Free forever</div>
             <div className="trust-pill">
               <div className="avatar-stack">
-                <img src={student1} alt="User" />
-                <img src={student2} alt="User" />
-                <img src={student3} alt="User" />
+                <img src={student1} alt="Clamber Student Sarah Ahmed" />
+                <img src={student2} alt="Clamber Student Ali Raza" />
+                <img src={student3} alt="Clamber Student Fatima Khan" />
                 <div className="avatar-more">+</div>
               </div>
               <span>10,000+ students</span>
@@ -149,7 +149,7 @@ const LandingPage: React.FC = () => {
       <section className="feature-deep-dive">
         <div className="deep-dive-grid">
           <div className="deep-dive-image">
-            <img src={heroIllustration} alt="Product Deep Dive" />
+            <img src={heroIllustration} alt="Clamber Product Dashboard Showcase" />
           </div>
           <div className="deep-dive-text">
             <h3>Designed for the modern student.</h3>

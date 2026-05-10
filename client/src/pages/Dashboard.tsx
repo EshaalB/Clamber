@@ -133,19 +133,23 @@ const Dashboard: React.FC = () => {
               </div>
             </header>
             <div className="task-list">
-              {stats?.todaysTasks?.length > 0 ? (
-                stats.todaysTasks.map((t: any) => (
-                  <TaskEntry 
-                    key={t._id}
-                    title={t.title} 
-                    course={t.subject} 
-                    priority={t.priority} 
-                    time={t.dueDate ? new Date(t.dueDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Flexible'} 
-                  />
-                ))
-              ) : (
+              {!loading && (stats?.todaysTasks || []).length === 0 && (
                 <div className="empty-state">
                   <p>All caught up! Time to relax.</p>
+                </div>
+              )}
+              {(stats?.todaysTasks || []).map((t: any) => (
+                <TaskEntry 
+                  key={t._id}
+                  title={t.title} 
+                  course={t.subject} 
+                  priority={t.priority} 
+                  time={t.dueDate ? new Date(t.dueDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Flexible'} 
+                />
+              ))}
+              {loading && (stats?.todaysTasks || []).length === 0 && (
+                <div className="loader-centered" style={{ minHeight: '100px' }}>
+                  <Loader2 className="spin" size={24} color="var(--active-accent)" />
                 </div>
               )}
             </div>
