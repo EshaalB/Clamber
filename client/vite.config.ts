@@ -7,18 +7,31 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          charts: ['recharts'],
-          three: ['three', '@react-three/fiber'],
-          motion: ['framer-motion'],
-          ui: ['lucide-react', 'sweetalert2'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'vendor';
+            }
+            if (id.includes('recharts')) {
+              return 'charts';
+            }
+            if (id.includes('three') || id.includes('@react-three')) {
+              return 'three';
+            }
+            if (id.includes('framer-motion')) {
+              return 'motion';
+            }
+            if (id.includes('lucide-react') || id.includes('sweetalert2')) {
+              return 'ui';
+            }
+            return 'vendor-others';
+          }
         },
       },
     },
     // Enable source maps for production debugging (optional)
     sourcemap: false,
     // Optimize chunk size warnings
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 800,
   },
 })
