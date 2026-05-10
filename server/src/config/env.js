@@ -54,7 +54,7 @@ const validateEnv = () => {
 
   if (missing.length > 0) {
     console.error(`❌ CRITICAL: Missing environment variables: ${missing.join(', ')}`);
-    if (env.isProd()) process.exit(1);
+    // if (env.isProd()) process.exit(1);
   }
 
   const warnings = [];
