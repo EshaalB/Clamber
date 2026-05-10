@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { Search, Bell, Wifi, Home, ChevronRight, User as UserIcon } from 'lucide-react';
+import { Search, Bell, Wifi, Home, ChevronRight, User as UserIcon, Menu } from 'lucide-react';
 import { useAuthStore } from '../../hooks/useAuthStore';
 import '../../styles/layout/Header.css';
 
@@ -15,7 +15,11 @@ const routeLabels: Record<string, string> = {
   profile: 'Profile',
 };
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onMobileMenuToggle?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
   const { user } = useAuthStore();
   const location = useLocation();
   const segments = location.pathname.split('/').filter(Boolean);
@@ -60,6 +64,9 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header-left">
+        <button className="mobile-menu-btn mobile-only" onClick={onMobileMenuToggle} aria-label="Open menu">
+          <Menu size={22} />
+        </button>
         <nav className="breadcrumbs">
           <Link to="/dashboard" className="breadcrumb-link">
             <Home size={15} />

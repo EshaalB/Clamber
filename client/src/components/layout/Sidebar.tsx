@@ -13,7 +13,8 @@ import {
   LogOut,
   User,
   ChevronLeft,
-  Menu
+  Menu,
+  X
 } from 'lucide-react';
 import { useAuthStore } from '../../hooks/useAuthStore';
 import '../../styles/layout/Sidebar.css';
@@ -21,9 +22,11 @@ import '../../styles/layout/Sidebar.css';
 interface SidebarProps {
   isCollapsed: boolean;
   onToggle: () => void;
+  isMobileOpen?: boolean;
+  onMobileClose?: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle, isMobileOpen, onMobileClose }) => {
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
   
@@ -61,7 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
   };
 
   return (
-    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileOpen ? 'mobile-open' : ''}`}>
       <div className="sidebar-brand">
         {isCollapsed ? (
           <button className="sidebar-toggle-collapsed" onClick={onToggle}>
@@ -75,8 +78,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
               </div>
               <span className="logo-text">Clamber</span>
             </NavLink>
-            <button className="sidebar-toggle" onClick={onToggle}>
+            <button className="sidebar-toggle desktop-only" onClick={onToggle}>
               <ChevronLeft size={20} />
+            </button>
+            <button className="sidebar-toggle mobile-close-btn mobile-only" onClick={onMobileClose}>
+              <X size={20} />
             </button>
           </>
         )}
@@ -89,6 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
             to={item.path}
             className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
             title={isCollapsed ? item.label : ''}
+            onClick={onMobileClose}
           >
             <span className="item-icon">{item.icon}</span>
             {!isCollapsed && <span className="item-label">{item.label}</span>}

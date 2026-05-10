@@ -154,3 +154,22 @@
   padding-top: 16px;
   border-top: 1px solid var(--border-color);
 }
+
+/* ─── Mobile Sidebar Overrides ─── */
+.mobile-close-btn {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .sidebar .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-close-btn {
+    display: flex !important;
+  }
+
+  .sidebar .sidebar-toggle-collapsed {
+    display: none;
+  }
+}

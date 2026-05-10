@@ -19,13 +19,360 @@
 .content-wrapper {
   flex: 1;
   width: 100%;
-  padding: 0; /* Remove padding here to allow full-width headers if needed */
+  padding: 0;
   display: flex;
   flex-direction: column;
 }
 
+/* ─── Mobile Utilities ─── */
+.mobile-only { display: none !important; }
+.desktop-only { display: flex !important; }
+
+/* ─── Mobile Sidebar Backdrop ─── */
+.mobile-sidebar-backdrop {
+  display: none;
+}
+
+/* ─── Mobile Responsive (≤ 768px) ─── */
 @media (max-width: 768px) {
+  .mobile-only { display: flex !important; }
+  .desktop-only { display: none !important; }
+
   .app-layout {
     flex-direction: column;
   }
+
+  /* Sidebar becomes a slide-in drawer on mobile */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 200;
+    width: 280px !important;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar.collapsed {
+    width: 280px !important;
+    padding: 24px 16px;
+  }
+
+  .sidebar.collapsed .item-label {
+    opacity: 1;
+    transform: none;
+    position: static;
+  }
+
+  .sidebar.collapsed .logo-text {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sidebar.collapsed .sidebar-brand {
+    justify-content: space-between;
+    padding: 0 8px;
+  }
+
+  .sidebar.collapsed .sidebar-item {
+    justify-content: flex-start;
+    padding: 10px 14px;
+  }
+
+  /* Backdrop overlay */
+  .mobile-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease;
+  }
+
+  /* Header compact mode */
+  .header {
+    padding: 0 16px !important;
+    height: 60px !important;
+  }
+
+  .header-center {
+    display: none;
+  }
+
+  .sync-status {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .mobile-menu-btn:hover {
+    background: var(--bg-hover);
+  }
+
+  .mobile-close-btn {
+    display: flex !important;
+  }
+
+  /* Page containers - tighter padding */
+  .dashboard-board-container,
+  .tasks-board-container,
+  .burnout-board-container,
+  .analytics-board-container,
+  .grade-planner-container,
+  .ai-assistant-container,
+  .settings-board-container,
+  .profile-board-container,
+  .advisor-container,
+  .admin-master-container {
+    padding: 16px !important;
+  }
+
+  /* Dashboard mobile */
+  .board-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .board-header h1 {
+    font-size: 22px !important;
+  }
+
+  .header-actions-group {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .stats-overview {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+
+  .dashboard-main-content {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dashboard-right-col {
+    display: none;
+  }
+
+  /* Tasks mobile */
+  .tasks-board-container .board-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tasks-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tasks-table {
+    min-width: 600px;
+  }
+
+  .view-toggle-group {
+    width: 100%;
+  }
+
+  /* Settings mobile */
+  .settings-sections {
+    columns: 1 !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .theme-selector {
+    grid-template-columns: 1fr !important;
+  }
+
+  .manual-times-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Profile mobile */
+  .profile-board-container {
+    max-width: 100% !important;
+  }
+
+  /* Grade Planner mobile */
+  .gp-courses-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gp-summary-bar {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Burnout mobile */
+  .burnout-dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .burnout-factors-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Analytics mobile */
+  .analytics-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .analytics-stat-cards {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* AI Assistant mobile */
+  .ai-assistant-container {
+    height: calc(100vh - 60px) !important;
+    padding: 0 !important;
+  }
+
+  .ai-messages-area {
+    padding: 16px !important;
+  }
+
+  .ai-input-area {
+    padding: 12px !important;
+  }
+
+  /* Admin mobile */
+  .stats-bento-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .admin-visual-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .system-settings-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .user-management-hub {
+    overflow-x: auto;
+  }
+
+  .admin-premium-table {
+    min-width: 700px;
+  }
+
+  .admin-tab-nav {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  /* Advisor mobile */
+  .advisor-stats-overview {
+    grid-template-columns: 1fr !important;
+  }
+
+  .advisor-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .advisor-table {
+    min-width: 600px;
+  }
+
+  /* Onboarding mobile */
+  .onboarding-card {
+    padding: 24px !important;
+  }
+
+  .choice-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gpa-btns {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .stress-selector {
+    flex-direction: column;
+  }
+
+  /* Notification dropdown mobile */
+  .notification-dropdown {
+    position: fixed !important;
+    top: 60px !important;
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+  }
+
+  /* Calendar mobile */
+  .calendar-grid-body {
+    grid-auto-rows: minmax(80px, auto) !important;
+  }
+
+  .calendar-day {
+    padding: 4px !important;
+  }
+
+  /* Quick Add Task modal */
+  .modal-overlay {
+    padding: 16px !important;
+    align-items: flex-end !important;
+  }
+
+  .quick-add-container {
+    border-radius: 16px 16px 0 0 !important;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+}
+
+/* ─── Small phone (≤ 480px) ─── */
+@media (max-width: 480px) {
+  .stats-overview {
+    grid-template-columns: 1fr !important;
+  }
+
+  .burnout-factors-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .analytics-stat-cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stats-bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .board-header h1 {
+    font-size: 20px !important;
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
