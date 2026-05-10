@@ -3,7 +3,7 @@ import React, { useMemo, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const NeuralNodes = ({ count = 80, color = "#7CB9E8" }) => {
+const NeuralNodes = ({ count = 30, color = "#7CB9E8" }) => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const lineRef = useRef<THREE.LineSegments>(null);
   const { viewport } = useThree();
@@ -48,7 +48,7 @@ const NeuralNodes = ({ count = 80, color = "#7CB9E8" }) => {
       }
 
       dummy.position.set(p.x, p.y, p.z);
-      dummy.scale.setScalar(0.15);
+      dummy.scale.setScalar(0.08);
       dummy.updateMatrix();
       meshRef.current?.setMatrixAt(i, dummy.matrix);
 
@@ -59,7 +59,7 @@ const NeuralNodes = ({ count = 80, color = "#7CB9E8" }) => {
         const dy2 = p.y - p2.y;
         const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
 
-        if (dist2 < 4) {
+        if (dist2 < 3) {
           linePositions.push(p.x, p.y, p.z, p2.x, p2.y, p2.z);
         }
       }
@@ -78,11 +78,11 @@ const NeuralNodes = ({ count = 80, color = "#7CB9E8" }) => {
     <>
       <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
         <sphereGeometry args={[1, 16, 16]} />
-        <meshBasicMaterial color={color} transparent opacity={0.6} />
+        <meshBasicMaterial color={color} transparent opacity={0.15} />
       </instancedMesh>
       <lineSegments ref={lineRef}>
         <bufferGeometry />
-        <lineBasicMaterial color={color} transparent opacity={0.15} linewidth={1} />
+        <lineBasicMaterial color={color} transparent opacity={0.05} linewidth={1} />
       </lineSegments>
     </>
   );

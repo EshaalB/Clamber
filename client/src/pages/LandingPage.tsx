@@ -21,8 +21,10 @@ import NeuralBackground from '../components/shared/NeuralBackground';
 import '../styles/pages/LandingPage.css';
 
 const LandingPage: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
   return (
-    <div className="landing-page force-default-theme">
+    <div className={`landing-page force-default-theme ${isMobileMenuOpen ? 'mobile-menu-active' : ''}`}>
       <div className="antigravity-bg">
         <NeuralBackground color="#7CB9E8" />
       </div>
@@ -34,7 +36,7 @@ const LandingPage: React.FC = () => {
         </div>
         
         <nav className="nav-links desktop-only">
-          <a href="#products">Features</a>
+          <a href="#features">Features</a>
           <a href="#roadmap">Roadmap</a>
           <a href="#testimonials">Testimonials</a>
           <a href="#faq">FAQ</a>
@@ -45,9 +47,27 @@ const LandingPage: React.FC = () => {
           <Link to="/signup" className="btn-primary btn-shine btn-nav-cta">Get Started</Link>
         </div>
 
-        <div className="mobile-menu-icon">
-          <Menu />
-        </div>
+        <button 
+          className="mobile-menu-icon" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          {isMobileMenuOpen ? <ArrowRight /> : <Menu />}
+        </button>
+
+        {isMobileMenuOpen && (
+          <div className="mobile-menu-overlay">
+            <nav className="mobile-nav-links">
+              <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
+              <a href="#roadmap" onClick={() => setIsMobileMenuOpen(false)}>Roadmap</a>
+              <a href="#testimonials" onClick={() => setIsMobileMenuOpen(false)}>Testimonials</a>
+              <a href="#faq" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
+              <hr className="mobile-divider" />
+              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>Log In</Link>
+              <Link to="/signup" className="btn-primary" onClick={() => setIsMobileMenuOpen(false)}>Get Started</Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       <section className="hero-section centered-hero">
