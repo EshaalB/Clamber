@@ -292,6 +292,7 @@
 }
 
 .btn-save-primary:hover {
+  background: var(--active-accent-hover);
   box-shadow: 0 6px 16px color-mix(in srgb, var(--active-accent) 35%, transparent);
 }
 
@@ -490,6 +491,7 @@
 }
 
 .btn-save-profile:hover {
+  background: var(--active-accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px color-mix(in srgb, var(--active-accent) 35%, transparent);
 }

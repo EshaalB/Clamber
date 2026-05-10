@@ -33,7 +33,8 @@
 
   /* Default Active Accent (Blue Theme - Airy & Desaturated) */
   --active-accent: #93b9d6;
-  --active-accent-hover: #a5c4dd;
+  --active-accent-hover: color-mix(in srgb, var(--active-accent) 80%, black);
+  --active-accent-transparent: color-mix(in srgb, var(--active-accent) 15%, transparent);
   --text-on-accent: #1e293b;
 
   /* Semantic Status Tokens (Pastel) */
