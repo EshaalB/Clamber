@@ -99,13 +99,7 @@ const ProfilePage: React.FC = () => {
     showSuccess('Archived', 'Current semester data has been archived.');
   };
 
-  if (loading && courses.length === 0) {
-    return (
-      <div className="profile-loading">
-        <Loader2 className="spin" size={48} color="var(--active-accent)" />
-      </div>
-    );
-  }
+  // Initial mount is instant.
 
   const yearLabel = (year: number) => {
     const years = ['Freshman', 'Sophomore', 'Junior', 'Senior'];

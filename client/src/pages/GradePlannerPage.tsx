@@ -51,13 +51,7 @@ const GradePlannerPage: React.FC = () => {
     return totalCredits > 0 ? (totalPoints / totalCredits) : 0;
   }, [courses]);
 
-  if (loading) {
-    return (
-      <div className="grade-planner-container loading-state">
-        <Loader2 className="spin" size={48} color="var(--active-accent)" />
-      </div>
-    );
-  }
+  // Initial mount is instant.
 
   const currentGPA = gpaData?.currentGPA || 0;
   const targetGPA = user?.targetGPA || 3.5;

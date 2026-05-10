@@ -25,13 +25,7 @@ const AdvisorPage: React.FC = () => {
     load();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="advisor-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
-        <Loader2 className="spin" size={48} color="var(--active-accent)" />
-      </div>
-    );
-  }
+  // Initial mount is instant.
 
   return (
     <div className="advisor-container">
