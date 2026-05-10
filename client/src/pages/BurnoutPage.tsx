@@ -255,7 +255,7 @@ const BurnoutPage: React.FC = () => {
             <AlertTriangle size={18} color="var(--color-warning-text)" />
           </header>
           <div className="warnings-list">
-            {(data.warnings || []).length > 0 ? (
+            {(data?.warnings || []).length > 0 ? (
               data.warnings.map((w: string, i: number) => (
                 <div key={i} className="warning-item">
                   <div className="warning-icon"><AlertTriangle size={14} /></div>
@@ -274,7 +274,7 @@ const BurnoutPage: React.FC = () => {
         <section className="bento-card card-standard advice-card">
           <header className="card-header"><h3>Personalized Advice</h3></header>
           <div className="advice-list">
-            {(data.suggestions || []).length > 0 ? (
+            {(data?.suggestions || []).length > 0 ? (
               data.suggestions.map((item: string, i: number) => (
                 <div key={i} className="advice-item">
                   <div className="advice-dot"></div>
