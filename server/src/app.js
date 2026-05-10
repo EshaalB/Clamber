@@ -78,6 +78,11 @@ if (env.isDev()) {
 app.use('/admin/assets', express.static(path.join(__dirname, 'views/admin/assets')));
 app.use('/public', express.static(path.join(__dirname, '../public')));
 
+// ─── Base Route ───
+app.get('/', (req, res) => {
+  res.json({ message: 'Clamber API is running!', status: 'active' });
+});
+
 // ─── API Routes ───
 app.use('/api/v1', apiRoutes);
 
