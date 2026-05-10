@@ -61,7 +61,8 @@
 
 .gauge-header-v2 p {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  opacity: 0.85;
   margin-top: 2px;
 }
 
@@ -117,7 +118,8 @@
 
 .risk-description {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-weight: 500;
   line-height: 1.5;
   max-width: 400px;
   margin-top: 12px;
@@ -163,7 +165,8 @@
 
 .card-subtitle {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-weight: 500;
   line-height: 1.5;
   margin-bottom: 16px;
 }
@@ -369,8 +372,8 @@
 
 .system-green p {
   font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
+  font-weight: 700;
+  color: var(--text-secondary);
 }
 
 
@@ -389,7 +392,8 @@
   font-weight: 700;
   border-radius: 6px;
   cursor: pointer;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  opacity: 0.7;
 }
 
 .period-pill.active {

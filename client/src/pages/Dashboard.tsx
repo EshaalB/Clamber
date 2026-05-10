@@ -49,7 +49,12 @@ const Dashboard: React.FC = () => {
       if (user?.lastWellnessUpdate) {
         const lastUpdate = new Date(user.lastWellnessUpdate);
         const diffDays = (Date.now() - lastUpdate.getTime()) / (1000 * 60 * 60 * 24);
-        if (diffDays > 7) setShowWellnessPrompt(true);
+        const hasShownInSession = sessionStorage.getItem('clamber_wellness_prompt_shown');
+        
+        if (diffDays > 7 && !hasShownInSession) {
+          setShowWellnessPrompt(true);
+          sessionStorage.setItem('clamber_wellness_prompt_shown', 'true');
+        }
       }
     } catch (err) {
       console.error('Dashboard data fetch failed', err);
@@ -218,16 +223,17 @@ const Dashboard: React.FC = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label>Stress Level (1-5): {wellnessData.stressLevel}</label>
+            <div className="form-group stress-selector">
+              <label>Stress Level (1-5): <span className="value-badge">{wellnessData.stressLevel}</span></label>
               <div className="stress-pills">
                 {[1,2,3,4,5].map(v => (
                   <button 
                     key={v} 
-                    className={wellnessData.stressLevel === v ? 'active' : ''}
+                    className={`stress-pill ${wellnessData.stressLevel === v ? 'active' : ''}`}
                     onClick={() => setWellnessData({...wellnessData, stressLevel: v})}
                   >
-                    {v}
+                    <span className="pill-number">{v}</span>
+                    <span className="pill-label">{['Low', 'Mild', 'Mod', 'High', 'Extr'][v-1]}</span>
                   </button>
                 ))}
               </div>
