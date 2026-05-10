@@ -137,12 +137,12 @@
 
 .btn-action:hover {
   background: var(--active-accent);
-  color: white;
+  color: var(--text-on-accent);
   border-color: var(--active-accent);
 }
 
 .btn-reach-out {
   background: var(--active-accent);
-  color: white;
+  color: var(--text-on-accent);
   border: none;
 }

@@ -178,8 +178,8 @@
 .btn-onboard-continue {
   padding: 10px 24px;
   background-color: var(--active-accent);
-  color: white;
-  border-radius: 8px;
+  color: var(--text-on-accent);
+  border-radius: 10px;
   border: none;
   font-weight: 600;
   font-size: 14px;
@@ -187,6 +187,7 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .skip-link {
@@ -275,9 +276,9 @@
 }
 
 .gpa-btn.selected {
-  background-color: var(--accent-mint-deep);
-  color: white;
-  border-color: var(--accent-mint-deep);
+  background-color: var(--active-accent);
+  color: var(--text-on-accent);
+  border-color: var(--active-accent);
 }
 
 .stress-selector {
@@ -300,7 +301,7 @@
 
 .stress-btn.selected {
   background-color: var(--active-accent);
-  color: white;
+  color: var(--text-on-accent);
   border-color: var(--active-accent);
 }
 

@@ -406,11 +406,12 @@
 }
 
 .stress-pill.active .pill-number {
-  color: white;
+  color: var(--text-on-accent);
 }
 
 .stress-pill.active .pill-label {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-on-accent);
+  opacity: 0.8;
 }
 
 .mt-8 { margin-top: 8px; }

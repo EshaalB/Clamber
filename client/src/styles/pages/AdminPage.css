@@ -59,7 +59,7 @@
 
 .admin-tab-nav button.active {
   background: var(--active-accent);
-  color: white;
+  color: var(--text-on-accent);
   box-shadow: 0 4px 12px color-mix(in srgb, var(--active-accent) 20%, transparent);
 }
 
@@ -221,7 +221,7 @@
   height: 40px;
   border-radius: 14px;
   background: var(--active-accent);
-  color: white;
+  color: var(--text-on-accent);
   display: flex;
   align-items: center;
   justify-content: center;

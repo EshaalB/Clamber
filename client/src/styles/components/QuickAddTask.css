@@ -123,13 +123,13 @@
 .btn-submit-task {
   padding: 10px 24px;
   background-color: var(--active-accent);
-  color: white;
+  color: var(--text-on-accent);
   border: none;
   border-radius: 10px;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
 }
 
 .btn-submit-task:disabled {
@@ -138,5 +138,5 @@
 }
 
 .btn-submit-task:hover:not(:disabled) {
-  opacity: 0.9;
+  background-color: var(--active-accent-hover);
 }

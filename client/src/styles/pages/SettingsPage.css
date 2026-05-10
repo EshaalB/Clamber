@@ -362,10 +362,7 @@
   transform: translateX(18px);
 }
 
-.switch.btn-auth-continue:hover {
-  background: var(--active-accent-hover);
-  transform: translateY(-1px);
-}
+
 
 /* Action items */
 .action-item {

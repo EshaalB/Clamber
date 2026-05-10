@@ -69,11 +69,17 @@
 
 .auth-btn-primary {
   background-color: var(--active-accent);
-  color: white;
+  color: var(--text-on-accent);
   padding: 12px;
   border-radius: 12px;
   font-weight: 600;
   margin-top: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.auth-btn-primary:hover {
+  background-color: var(--active-accent-hover);
 }
 
 .auth-divider {

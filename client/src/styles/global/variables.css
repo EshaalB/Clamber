@@ -163,7 +163,7 @@
   --color-info-text: #93c5fd;
 
   --active-accent: #93c5fd;
-  --active-accent-hover: #bfdbfe;
+  --active-accent-hover: color-mix(in srgb, var(--active-accent) 80%, white);
   --text-on-accent: #0f172a;
 
   /* Icon Specific vibrant colors for dark mode */

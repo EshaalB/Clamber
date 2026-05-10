@@ -119,7 +119,7 @@
 
 .calendar-day.today .day-number {
   background: var(--active-accent);
-  color: white;
+  color: var(--text-on-accent);
   width: 24px;
   height: 24px;
   display: flex;
