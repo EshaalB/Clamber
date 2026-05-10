@@ -93,10 +93,10 @@ const chat = async (message, conversationHistory = [], userContext = {}) => {
   const client = getClient();
 
   if (!client) {
-    // Return a contextual fallback response
+    // Return a contextual fallback response with a warning
     const randomIndex = Math.floor(Math.random() * FALLBACK_RESPONSES.length);
     return {
-      response: FALLBACK_RESPONSES[randomIndex],
+      response: `[Offline Mode] ${FALLBACK_RESPONSES[randomIndex]} (Please configure GROQ_API_KEY in the dashboard to enable full AI features).`,
       isFallback: true,
     };
   }
