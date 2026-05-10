@@ -5,6 +5,6 @@
   "scripts": {
     "install": "cd client && npm install && cd ../server && npm install",
     "build-frontend": "cd client && npm install && npm run build",
-    "start": "cd server && npm start"
+    "start": "node server/src/server.js"
   }
 }
